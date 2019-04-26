@@ -1,0 +1,74 @@
+﻿Car_inventory={}
+class automobile:
+    MV_key=0
+    def __init__(self,Make,Model,Color,Year,Mileage):
+        self._Make=Make
+        self._Model=Model
+        self._Color=Color
+        self._Year=Year
+        self._Mileage=Mileage
+        self.Carinfo=Make +' '+ Model +' '+ Color +' '+ str(Year) +' '+ str(Mileage)
+        automobile.MV_key+=1
+Car1=automobile('Makex','Modelx','Colorx',1929,23000)
+Car_inventory['Car1']=Car1
+
+
+Car2=automobile('MakeA','ModelA','ColorA',2009,230000)
+Car_inventory['Car2']=Car2
+
+
+Car3=automobile('MakeA','ModelA','ColorA',1929,26000)
+Car_inventory['Car3']=Car3
+
+
+
+
+options=input('add , remove , update  ').lower()
+def start(options):
+    if options=='add':
+        MKE=input('Enter Car Make.')
+        MDL=input('Enter Car Model.')
+        COL=input('Enter Car Color.')
+        YR=input('Enter Car Year.')
+        Miles=input('Enter Car Mileage.')
+        New_car=automobile(MKE, MDL,COL,YR,Miles)
+
+
+        Car_inventory[str(automobile.MV_key)]=New_car
+        options=input('add , remove , update  ').lower()
+        start(options)
+    elif options=='remove':
+        for car in Car_inventory:
+            print(Car_inventory[car]._Make)     
+        
+        MKE=input('Enter Car Make.')
+##        for car in Car_inventory:
+            
+        for car in Car_inventory:
+            if Car_inventory[car]._Make==MKE:
+                print(Car_inventory[car]._Model)     
+         
+        MDL=input('Enter Car Model.')
+        
+        for car in Car_inventory:
+            if Car_inventory[car]._Model==MDL:
+                print(Car_inventory[car]._Color)
+                
+        COL=input('Enter Car Color.')
+        
+        for car in Car_inventory:
+            if Car_inventory[car]._Color==COL:
+                print(Car_inventory[car]._Year)
+                
+        YR=int(input('Enter Car Year.'))
+        
+        for car in Car_inventory:
+            if Car_inventory[car]._Year==YR:
+                print(Car_inventory[car]._Mileage)
+                
+        Miles=input('Enter Car Mileage.')
+
+
+    elif options=='update':
+        pass
+start(options)
